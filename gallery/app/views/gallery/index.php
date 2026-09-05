@@ -10,11 +10,11 @@
             <?php foreach ($_view['entry_sets'][$category['id']] as $entry) : ?>
             <div class="col-md-3">
                 <div class="card mb-4 shadow-sm">
+                    <?php if (!empty($entry['thumbnail'])) : ?>
                     <a href="<?php t(MAIN_FILE) ?>/gallery/detail/<?php h($entry['code']) ?>">
-                        <?php if (!empty($entry['thumbnail'])) : ?>
                         <img class="card-img-top" src="<?php t($GLOBALS['config']['storage_url'] . '/' . $GLOBALS['config']['file_target']['entry'] . $entry['id'] . '/' . $entry['thumbnail']) ?>" alt="<?php h($entry['title']) ?>">
-                        <?php endif ?>
                     </a>
+                    <?php endif ?>
                     <div class="card-body">
                         <p class="card-text"><a href="<?php t(MAIN_FILE) ?>/gallery/detail/<?php h($entry['code']) ?>"><?php h($entry['title']) ?></a></p>
                     </div>

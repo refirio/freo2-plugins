@@ -1,6 +1,6 @@
 <?php if (!empty($_view['home_entry'])) :  ?>
 <div id="page-<?php t($_view['home_entry']['code']) ?>">
-    <h2 class="h3 mb-3"><?php h($_view['home_entry']['title']) ?></h2>
+    <h2 class="h3 mt-4 mb-3"><?php h($_view['home_entry']['title']) ?></h2>
 
     <?php if (!empty($_view['home_entry']['pictures']) && !empty($_view['home_entry']['thumbnail'])) : ?>
     <div class="images">

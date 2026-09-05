@@ -1,6 +1,6 @@
 <?php if (!empty($_view['home_entry'])) :  ?>
 <div id="entry-<?php t($_view['home_entry']['code']) ?>">
-    <h2 class="h3 mb-3"><?php h($_view['home_entry']['title']) ?></h2>
+    <h2 class="h3 mt-4 mb-3"><?php h($_view['home_entry']['title']) ?></h2>
     <div class="text">
         <?php if (!empty($_view['home_entry']['thumbnail'])) : ?>
         <p class="mt-1"><img src="<?php t($GLOBALS['config']['storage_url'] . '/' . $GLOBALS['config']['file_target']['entry'] . $_view['home_entry']['id'] . '/' . $_view['home_entry']['thumbnail']) ?>" alt="" class="img-fluid"></p>

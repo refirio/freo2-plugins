@@ -97,7 +97,7 @@
                                     <?php endforeach ?>
                                 </td>
                                 <?php endif ?>
-                                <td><a href="<?php t(MAIN_FILE) ?>/admin/gallery_form?id=<?php t($entry['id']) ?>" class="btn btn-primary btn-sm text-nowrap text-nowrap">編集</a></td>
+                                <td><a href="<?php t(MAIN_FILE) ?>/admin/gallery_form?id=<?php t($entry['id']) ?>" class="btn btn-primary btn-sm text-nowrap">編集</a></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

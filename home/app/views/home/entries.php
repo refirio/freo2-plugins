@@ -1,6 +1,6 @@
 <?php if (!empty($_view['home_entries'])) : ?>
 <div id="entry">
-    <h2 class="h3 mb-3">エントリー</h2>
+    <h2 class="h3 mt-4 mb-3">エントリー</h2>
     <ul class="headline">
         <?php foreach ($_view['home_entries'] as $entry) : ?>
         <li>
