@@ -1,7 +1,7 @@
 <?php import('app/views/header.php') ?>
 
     <div id="contact">
-        <h2 class="h3 mb-3"><?php h($_view['title']) ?></h2>
+        <h2 class="h3 mt-4 mb-3"><?php h($_view['title']) ?></h2>
         <?php e($GLOBALS['setting']['text_contact_preview']) ?>
         <form action="<?php t(MAIN_FILE) ?>/contact/preview" method="post">
             <input type="hidden" name="_token" value="<?php t($_view['token']) ?>" class="token">
@@ -25,8 +25,8 @@
                 <dd class="col-sm-9"><?php h($_view['contact']['message']) ?></dd>
             </dl>
             <div class="form-group mt-4">
-                <a href="<?php t(MAIN_FILE) ?>/contact/?referer=preview" class="btn btn-secondary px-4">修正</a>
-                <button type="submit" class="btn btn-primary px-4"><?php h($GLOBALS['string']['button_auth_contact']) ?></button>
+                <a href="<?php t(MAIN_FILE) ?>/contact/?referer=preview" class="btn btn-secondary px-4"><?php h($GLOBALS['string']['button_contact_back']) ?></a>
+                <button type="submit" class="btn btn-primary px-4"><?php h($GLOBALS['string']['button_contact']) ?></button>
             </div>
         </form>
     </div>
