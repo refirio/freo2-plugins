@@ -59,14 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // 入力データを整理
-        $post = array(
+        $post = [
             'comment' => model('normalize_comments', [
                 'entry_id' => isset($_POST['entry_id']) ? $_POST['entry_id'] : '',
                 'name'     => isset($_POST['name'])     ? $_POST['name']     : '',
                 'url'      => isset($_POST['url'])      ? $_POST['url']      : '',
                 'message'  => isset($_POST['message'])  ? $_POST['message']  : '',
             ]),
-        );
+        ];
 
         // 入力データを検証＆登録
         $warnings = model('validate_comments', $post['comment']);

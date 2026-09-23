@@ -172,12 +172,6 @@ $GLOBALS['plugin']['order']['setting_define'] = [
         'type'        => 'text',
         'required'    => false,
     ],
-    'button_order_preview' => [
-        'name'        => 'ボタン 注文確認',
-        'explanation' => null,
-        'type'        => 'text',
-        'required'    => false,
-    ],
     'mail_order_subject' => [
         'name'        => 'メール件名 注文完了',
         'explanation' => null,

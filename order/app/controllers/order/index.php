@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 入力データを整理
-    $post = array(
+    $post = [
         'order_record' => model('normalize_order_records', [
             'provide'       => isset($_POST['provide'])       ? $_POST['provide']       : '',
             'payment_id'    => isset($_POST['payment_id'])    ? $_POST['payment_id']    : '',
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'text'          => isset($_POST['text'])          ? $_POST['text']          : '',
             'message'       => isset($_POST['message'])       ? $_POST['message']       : '',
         ]),
-    );
+    ];
 
     // 入力データを検証＆登録
     $warnings = model('validate_order_records', $post['order_record']);

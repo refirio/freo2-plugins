@@ -112,8 +112,8 @@ function plugin_markdown_convert($text)
             continue;
         }
 
-        // 生HTML(1行完結のタグ。山括弧オートリンクは除く)
-        if (!plugin_markdown_is_autolink_bracket($trimmed) && preg_match('/^<[a-zA-Z][^>]*>$/', $trimmed)) {
+        // 生HTML(タグだけで構成された1行。<a><img></a> のように複数のタグが並ぶ行も含む。山括弧オートリンクは除く)
+        if (!plugin_markdown_is_autolink_bracket($trimmed) && plugin_markdown_is_html_line($trimmed)) {
             $out[] = $trimmed;
             $i++;
             continue;
@@ -240,7 +240,7 @@ function plugin_markdown_is_block_start($lines, $i, $n)
     if (preg_match('/^<(' . plugin_markdown_block_tag_pattern() . ')(?:[\s>]|$)/i', $trimmed)) {
         return true;
     }
-    if (!plugin_markdown_is_autolink_bracket($trimmed) && preg_match('/^<[a-zA-Z][^>]*>$/', $trimmed)) {
+    if (!plugin_markdown_is_autolink_bracket($trimmed) && plugin_markdown_is_html_line($trimmed)) {
         return true;
     }
     if (preg_match('/^(#{1,6})\s*(.+)$/u', $line)) {
@@ -269,6 +269,19 @@ function plugin_markdown_is_block_start($lines, $i, $n)
 function plugin_markdown_block_tag_pattern()
 {
     return 'details|div|section|article|header|footer|aside|nav|figure|form';
+}
+
+/**
+ * 行全体がHTMLタグだけで構成されているか( <img ...> / <a ...><img ...></a> など、タグの間に文字を含まない)を判定する。
+ * 開始タグで始まる行だけを対象とする。タグ名の直後が空白・/・> のものだけをタグとみなすため、
+ * <https://...> や <user@example.com> などの山括弧オートリンクはタグとして扱わない。
+ *
+ * @param string $trimmed 前後の空白を除去した行
+ * @return bool タグだけで構成されていれば true
+ */
+function plugin_markdown_is_html_line($trimmed)
+{
+    return (bool) preg_match('/^<[a-zA-Z][a-zA-Z0-9\-]*(?:\s[^>]*)?\/?>(?:\s*<\/?[a-zA-Z][a-zA-Z0-9\-]*(?:\s[^>]*)?\/?>)*$/', $trimmed);
 }
 
 /**
