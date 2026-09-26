@@ -163,7 +163,7 @@ $provide = $_SESSION['post']['order_record']['provide'];
 // 投稿セッションを初期化
 unset($_SESSION['post']);
 unset($_SESSION['item']);
-unset($_SESSION['cart'][$provide]);
+$_SESSION['cart'][$provide] = []; // 処理対象のみカラにする。キーごと消すと、カートの追加・変更・削除が foreach で未定義のキーを読むため
 
 // リダイレクト
 redirect('/order/complete');

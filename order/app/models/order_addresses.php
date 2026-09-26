@@ -203,6 +203,8 @@ function validate_order_addresses($queries, $options = [])
     // カナ 姓
     if (isset($queries['kana_01'])) {
         if (!validator_required($queries['kana_01'])) {
+        } elseif (!validator_katakana($queries['kana_01'])) {
+            $messages['kana_01'] = 'カナ 姓は全角カタカナで入力してください。';
         } elseif (!validator_max_length($queries['kana_01'], 20)) {
             $messages['kana_01'] = 'カナ 姓は20文字以内で入力してください。';
         }
@@ -211,6 +213,8 @@ function validate_order_addresses($queries, $options = [])
     // カナ 名
     if (isset($queries['kana_02'])) {
         if (!validator_required($queries['kana_02'])) {
+        } elseif (!validator_katakana($queries['kana_02'])) {
+            $messages['kana_02'] = 'カナ 名は全角カタカナで入力してください。';
         } elseif (!validator_max_length($queries['kana_02'], 20)) {
             $messages['kana_02'] = 'カナ 名は20文字以内で入力してください。';
         }

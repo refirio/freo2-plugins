@@ -125,6 +125,7 @@ function delete_order_stocks($queries, $options = [])
             'update' => DATABASE_PREFIX . 'order_stocks AS order_stocks',
             'set'    => [
                 'deleted' => localdate('Y-m-d H:i:s'),
+                'code'    => ['CONCAT(\'DELETED ' . localdate('YmdHis') . ' \', code)'],
             ],
             'where'  => isset($queries['where']) ? $queries['where'] : '',
             'limit'  => isset($queries['limit']) ? $queries['limit'] : '',

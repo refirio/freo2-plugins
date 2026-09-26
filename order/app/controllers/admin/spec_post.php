@@ -31,6 +31,7 @@ if (empty($_SESSION['post']['order_spec']['id'])) {
             'delivery_days' => $_SESSION['post']['order_spec']['delivery_days'],
             'sales_limit'   => $_SESSION['post']['order_spec']['sales_limit'],
             'memo'          => $_SESSION['post']['order_spec']['memo'],
+            'sort'          => $_SESSION['post']['order_spec']['sort'],
         ],
     ]);
     if (!$resource) {

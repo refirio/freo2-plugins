@@ -217,11 +217,6 @@ function normalize_order_records($queries, $options = [])
         $queries['discount'] = mb_convert_kana($queries['discount'], 'n', MAIN_INTERNAL_ENCODING);
     }
 
-    // 値引き額
-    if (isset($queries['discount'])) {
-        $queries['discount'] = mb_convert_kana($queries['discount'], 'n', MAIN_INTERNAL_ENCODING);
-    }
-
     // 配送日
     if (isset($queries['shipping_date'])) {
         $queries['shipping_date'] = mb_convert_kana($queries['shipping_date'], 'a', MAIN_INTERNAL_ENCODING);
@@ -279,9 +274,9 @@ function validate_order_records($queries, $options = [])
         }
     }
 
-    // 配送方法
-    if (isset($queries['delivery_id']) && ($queries['provide'] ?? null) === 'delivery') {
-        if (!validator_required($queries['delivery_id'])) {
+    // 配送方法（正規化で未選択が NULL になるので、キーの有無で確認し、NULL も未入力として扱う）
+    if (array_key_exists('delivery_id', $queries) && ($queries['provide'] ?? null) === 'delivery') {
+        if ($queries['delivery_id'] === null || !validator_required($queries['delivery_id'])) {
             $messages['delivery_id'] = '配送方法が入力されていません。';
         }
     }

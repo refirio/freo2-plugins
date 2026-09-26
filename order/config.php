@@ -243,7 +243,7 @@ $GLOBALS['plugin']['order']['setting_default'] = [
 ];
 
 /* オプション項目 */
-$GLOBALS['plugin']['order']['option'] = app_config('APP_OPTION', [
+$GLOBALS['plugin']['order']['option'] = [
     'order_stock' => [
         // 種類
         'kind' => [
@@ -318,4 +318,4 @@ $GLOBALS['plugin']['order']['option'] = app_config('APP_OPTION', [
             999 => '未定',
         ],
     ],
-]);
+];

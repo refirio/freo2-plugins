@@ -81,7 +81,7 @@
                 </form>
 
                 <?php if (!empty($_GET['id'])) : ?>
-                <form action="<?php t(MAIN_FILE) ?>/admin/rewrite_delete" method="post" class="delete">
+                <form action="<?php t(MAIN_FILE) ?>/admin/stock_delete" method="post" class="delete">
                     <input type="hidden" name="_token" value="<?php t($_view['token']) ?>" class="token">
                     <input type="hidden" name="id" value="<?php t($_view['order_stock']['id']) ?>">
                     <div class="card shadow-sm mb-3">

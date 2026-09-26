@@ -417,21 +417,6 @@ function set_item_order_shippings($shipping_id, $record_id, $items)
         $order_record_item_sets[$order_record_item['id']] = $order_record_item;
     }
 
-    // 配送失敗・返送になった発送記録は「発送済み」の集計から除外する
-    $excluded_ids   = model('select_unsuccessful_order_shippings', 'record_id = ' . intval($record_id));
-    $excluded_where = !empty($excluded_ids) ? ' AND shipping_id NOT IN(' . implode(',', $excluded_ids) . ')' : '';
-
-    // 他の発送記録での発送済み数を取得
-    $shipped_items = model('select_order_shipping_items', [
-        'select'   => 'record_item_id, SUM(quantity) AS quantity',
-        'where'    => 'record_item_id IN(' . implode(',', array_map('db_escape', array_column($items, 'record_item_id'))) . ') AND shipping_id != ' . intval($shipping_id) . $excluded_where,
-        'group_by' => 'record_item_id',
-    ]);
-    $shipped_quantities = [];
-    foreach ($shipped_items as $shipped_item) {
-        $shipped_quantities[$shipped_item['record_item_id']] = $shipped_item['quantity'];
-    }
-
     // 新しいデータを登録
     foreach ($items as $item) {
         if (!isset($order_record_item_sets[$item['record_item_id']])) {

@@ -285,7 +285,7 @@ function default_order_deliveries()
         'enabled'    => 1,
         'name'       => '',
         'text'       => null,
-        'cost'       => null,
+        'cost'       => 0,
         'surcharge'  => null,
         'calculate'  => '',
         'threshold'  => null,

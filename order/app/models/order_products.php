@@ -184,7 +184,7 @@ function delete_order_products($queries, $options = [])
  */
 function normalize_order_products($queries, $options = [])
 {
-    // 販売価格
+    // 数
     if (isset($queries['quantity'])) {
         $queries['quantity'] = mb_convert_kana($queries['quantity'], 'n', MAIN_INTERNAL_ENCODING);
     }
@@ -222,7 +222,14 @@ function validate_order_products($queries, $options = [])
 
     $messages = [];
 
-    // 数
+    // 規格
+    if (isset($queries['spec_id'])) {
+        if (!validator_required($queries['spec_id'])) {
+            $messages['spec_id'] = '規格が入力されていません。';
+        }
+    }
+
+    // 在庫
     if (isset($queries['stock_id'])) {
         if (!validator_required($queries['stock_id'])) {
             $messages['stock_id'] = '在庫が入力されていません。';

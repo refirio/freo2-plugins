@@ -24,6 +24,7 @@ if (empty($_SESSION['post']['order_product']['id'])) {
             'stock_id' => $_SESSION['post']['order_product']['stock_id'],
             'quantity' => $_SESSION['post']['order_product']['quantity'],
             'memo'     => $_SESSION['post']['order_product']['memo'],
+            'sort'     => $_SESSION['post']['order_product']['sort'],
         ],
     ]);
     if (!$resource) {

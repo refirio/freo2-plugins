@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['entry_passwords'][$galleries[0]['id']] = true;
 
             // リダイレクト
-            redirect('/catalog/' . $galleries[0]['code']);
+            redirect('/catalog/detail/' . $galleries[0]['code']);
         } else {
             warning('パスワードが違います。');
         }

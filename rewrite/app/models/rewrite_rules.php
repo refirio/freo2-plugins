@@ -232,8 +232,8 @@ function validate_rewrite_rules($queries, $options = [])
     if (isset($queries['type'])) {
         if (!validator_required($queries['type'])) {
             $messages['type'] = '挙動が入力されていません。';
-        } elseif (!validator_max_length($queries['type'], 200)) {
-            $messages['type'] = '挙動は200文字以内で入力してください。';
+        } elseif (!validator_list($queries['type'], $GLOBALS['plugin']['rewrite']['option']['rewrite_rule']['type'])) {
+            $messages['type'] = '挙動の値が不正です。';
         }
     }
 

@@ -172,6 +172,7 @@ function delete_order_specs($queries, $options = [])
             'update' => DATABASE_PREFIX . 'order_specs AS order_specs',
             'set'    => [
                 'deleted' => localdate('Y-m-d H:i:s'),
+                'code'    => ['CONCAT(\'DELETED ' . localdate('YmdHis') . ' \', code)'],
             ],
             'where'  => isset($queries['where']) ? $queries['where'] : '',
             'limit'  => isset($queries['limit']) ? $queries['limit'] : '',
@@ -262,6 +263,13 @@ function validate_order_specs($queries, $options = [])
 
     $messages = [];
 
+    // 商品
+    if (isset($queries['entry_id'])) {
+        if (!validator_required($queries['entry_id'])) {
+            $messages['entry_id'] = '商品が入力されていません。';
+        }
+    }
+
     // 規格管理コード
     if (isset($queries['code'])) {
         if (!validator_required($queries['code'])) {
@@ -272,7 +280,7 @@ function validate_order_specs($queries, $options = [])
             $messages['code'] = '規格管理コードは2文字以上80文字以内で入力してください。';
         } elseif ($options['duplicate'] === true) {
             if (empty($queries['id'])) {
-                $order_stocks = db_select([
+                $order_specs = db_select([
                     'select' => 'id',
                     'from'   => DATABASE_PREFIX . 'order_specs',
                     'where'  => [
@@ -283,9 +291,9 @@ function validate_order_specs($queries, $options = [])
                     ],
                 ]);
             } else {
-                $order_stocks = db_select([
+                $order_specs = db_select([
                     'select' => 'id',
-                    'from'   => DATABASE_PREFIX . 'order_stocks',
+                    'from'   => DATABASE_PREFIX . 'order_specs',
                     'where'  => [
                         'id != :id AND deleted IS NULL AND code = :code',
                         [
@@ -295,7 +303,7 @@ function validate_order_specs($queries, $options = [])
                     ],
                 ]);
             }
-            if (!empty($order_stocks)) {
+            if (!empty($order_specs)) {
                 $messages['code'] = '入力された規格管理コードはすでに使用されています。';
             }
         }

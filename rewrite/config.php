@@ -33,7 +33,7 @@ $GLOBALS['plugin']['rewrite']['author'] = 'refirio';
 $GLOBALS['plugin']['rewrite']['link'] = 'https://refirio.org/';
 
 /* オプション項目 */
-$GLOBALS['plugin']['rewrite']['option'] = app_config('APP_OPTION', [
+$GLOBALS['plugin']['rewrite']['option'] = [
     'rewrite_rule' => [
         // 有効
         'enabled' => [
@@ -46,4 +46,4 @@ $GLOBALS['plugin']['rewrite']['option'] = app_config('APP_OPTION', [
             'redirect' => '転送',
         ],
     ],
-]);
+];

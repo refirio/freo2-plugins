@@ -44,7 +44,7 @@ if ($text_home_index && preg_match_all('/\<\w+\:\w+\=\w+\>/', $text_home_index, 
             $contents = view('../../plugins/home/app/views/home/' . $type . '.php', true);
 
             // 指定箇所に結果を挿入する
-            $text_home_index = preg_replace('/\<' . $type . '\:' . $option . '\=' . $value . '\>/', $contents, $text_home_index);
+            $text_home_index = str_replace($mark, $contents, $text_home_index);
         }
     }
 }
