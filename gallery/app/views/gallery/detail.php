@@ -15,7 +15,7 @@
         <?php if (!empty($_view['entry']['pictures'])) : ?>
         <div class="images">
             <div class="image my-3">
-                <a href="<?php t(MAIN_FILE) ?>/file/gallery/<?php t($_view['entry']['code']) ?>"><img src="<?php t($GLOBALS['config']['storage_url'] . '/' . $GLOBALS['config']['file_target']['entry'] . $_view['entry']['id'] . '/' . $_view['entry']['pictures'][0]) ?>" alt="" class="img-fluid rounded mx-auto d-block"></a>
+                <a href="<?php t(MAIN_FILE) ?>/file/gallery/<?php t($_view['entry']['code']) ?>"><img src="<?php t(app_file_url('entry', $_view['entry']['id'], $_view['entry']['pictures'][0])) ?>" alt="" class="img-fluid rounded mx-auto d-block"></a>
             </div>
         </div>
         <?php endif ?>

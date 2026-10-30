@@ -12,7 +12,7 @@
                 <div class="card mb-4 shadow-sm">
                     <a href="<?php t(MAIN_FILE) ?>/gallery/detail/<?php h($entry['code']) ?>">
                         <?php if (!empty($entry['thumbnail'])) : ?>
-                        <img class="card-img-top" src="<?php t($GLOBALS['config']['storage_url'] . '/' . $GLOBALS['config']['file_target']['entry'] . $entry['id'] . '/' . $entry['thumbnail']) ?>" alt="<?php h($entry['title']) ?>">
+                        <img class="card-img-top" src="<?php t(app_file_url('entry', $entry['id'], $entry['thumbnail'])) ?>" alt="<?php h($entry['title']) ?>">
                         <?php endif ?>
                     </a>
                     <div class="card-body">
