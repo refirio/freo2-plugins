@@ -31,3 +31,6 @@ $GLOBALS['plugin']['contact']['author'] = 'refirio';
 
 /* プラグインURL */
 $GLOBALS['plugin']['contact']['link'] = 'https://refirio.org/';
+
+/* HTML出力で出力するページ（お問い合わせのフォームなので、HTML出力に対応しない） */
+$GLOBALS['plugin']['contact']['export'] = false;

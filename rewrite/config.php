@@ -32,6 +32,9 @@ $GLOBALS['plugin']['rewrite']['author'] = 'refirio';
 /* プラグインURL */
 $GLOBALS['plugin']['rewrite']['link'] = 'https://refirio.org/';
 
+/* HTML出力で出力するページ（URLの一覧を返す関数。app/bootstrap.php で定義する） */
+$GLOBALS['plugin']['rewrite']['export'] = 'plugin_rewrite_export_urls';
+
 /* オプション項目 */
 $GLOBALS['plugin']['rewrite']['option'] = [
     'rewrite_rule' => [

@@ -31,3 +31,6 @@ $GLOBALS['plugin']['markdown']['author'] = 'refirio';
 
 /* プラグインURL */
 $GLOBALS['plugin']['markdown']['link'] = 'https://refirio.org/';
+
+/* HTML出力で出力するページ（本文の表示を変えるだけなので、追加のページは無い） */
+$GLOBALS['plugin']['markdown']['export'] = [];
